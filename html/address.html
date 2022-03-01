@@ -1,0 +1,105 @@
+{%extends 'home.html'%}
+{%block content%}
+{%load static%}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form method="post">
+	{% csrf_token %}
+	<div class="form-group"> <!-- Full Name -->
+		<label for="full_name_id" class="control-label">Full Name</label>
+		<input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="Name">
+	</div>
+	<div class="form-group"> <!-- Street 1 -->
+		<label for="street1_id" class="control-label">Street Address 1</label>
+		<input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o">
+	</div>
+
+	<div class="form-group"> <!-- Street 2 -->
+		<label for="street2_id" class="control-label">Street Address 2</label>
+		<input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc.">
+	</div>
+
+	<div class="form-group"> <!-- City-->
+		<label for="city_id" class="control-label">City</label>
+		<input type="text" class="form-control" id="city_id" name="city" placeholder="Smallville">
+	</div>
+
+	<div class="form-group"> <!-- State Button -->
+		<label for="state_id" class="control-label">State</label>
+		<select class="form-control" id="state_id" name="state">
+			<option value="AL">Andhra Pradesh</option>
+			<option value="AK">Arunachal Pradesh</option>
+			<option value="AZ">Assam</option>
+			<option value="AR">Bihar</option>
+			<option value="CO">Chhattisgarh</option>
+            <option value="CA">Goa</option>
+			<option value="CT">Gujrat</option>
+			<option value="DE">Himachal Pradesh</option>
+			<option value="DC">Hariyana</option>
+			<option value="FL">Jharkhand</option>
+			<option value="GA">Karnataka</option>
+			<option value="HI">Kerala</option>
+			<option value="ID">Madhya Pradesh</option>
+			<option value="IL">Maharashtra</option>
+			<option value="IN">Manipur</option>
+			<option value="IA">Meghalaya</option>
+			<option value="KS">Mizoram</option>
+			<option value="KY">Nagaland</option>
+			<option value="LA">Odisha</option>
+			<option value="ME">Punjab</option>
+			<option value="MD">Rajisthan</option>
+			<option value="MA">Sikkim</option>
+			<option value="MI">Tamil Nadu</option>
+			<option value="MN">Telangana</option>
+			<option value="MS">Tripura</option>
+			<option value="MO">Utter Pradesh</option>
+			<option value="MT">Uttarakhand</option>
+			<option value="NE">West Bangal</option>
+			<option value="NV">Andaman and Nicobar Islands</option>
+			<option value="NH">Chandigarh</option>
+			<option value="NJ">Dadra & Nagar Haveli and Daman & Diu</option>
+			<option value="NM">Delhi</option>
+			<option value="NY">Jammu and Kashmir</option>
+			<option value="NC">Lakshadweep</option>
+			<option value="ND">Puducherry</option>
+			<option value="OH">Ladakh</option>
+		</select>
+	</div>
+	<div class="form-group"> <!-- Zip Code-->
+		<label for="num_id" class="control-label">Number</label>
+		<input type="text" class="form-control" id="num_id" name="num" placeholder="##########" required="required">
+	</div>
+
+	<div class="form-group"> <!-- Zip Code-->
+		<label for="Pin_id" class="control-label">Pin Code</label>
+		<input type="text" class="form-control" id="Pin_id" name="pin" placeholder="#####">
+	</div>
+
+
+	<div class="form-group btn btn-success btn-lg btn-block"> <!-- Submit Button -->
+		<a href="payment"> Buy!</a>
+	</div>
+
+</form>
+
+{%endblock%}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

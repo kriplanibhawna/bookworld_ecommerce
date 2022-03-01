@@ -1,0 +1,63 @@
+{%extends 'home.html'%}
+{%block content%}
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'css/signup.css'%}">
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<body>
+<div class="box" style="margin-top: 300px;">
+  <h2>SIGNUP</h2>
+  <form method="post">
+      {% csrf_token %}
+    <div class="inputBox">
+      <input type="text" name="first_name" required onkeyup="this.setAttribute('value', this.value);" value="">
+      <label>Name</label>
+    </div>
+      <div class="inputBox">
+      <input type="text" name="username" required onkeyup="this.setAttribute('value', this.value);" value="">
+      <label>User Name</label>
+    </div>
+    <div class="inputBox">
+      <input type="email" name="email" required onkeyup="this.setAttribute('value', this.value);" value="">
+      <label>Email</label>
+    </div>
+    <div class="inputBox">
+      <input type="password" name="password" required value=""
+             onkeyup="this.setAttribute('value', this.value);"
+             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+      <label>Password</label>
+    </div>
+      <div class="inputBox">
+      <input type="password" name="rpassword" required value=""
+             onkeyup="this.setAttribute('value', this.value);"
+             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+      <label>Confirm Password</label>
+    </div>
+    <input type="submit" name="sign-up" value="Sign Up">
+        <p class="text-center text-muted small">Alredy have an account? <a href="login">Sign In here!</a></p>
+  </form>
+
+<!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> www.Bookworld.com.in</a>
+  </div>
+  <!-- Copyright -->
+</div>
+{%endblock%}
+</body>
+</html>

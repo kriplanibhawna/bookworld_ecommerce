@@ -1,0 +1,153 @@
+{%extends 'home.html'%}
+{%block content%}
+{%load static%}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <style>
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+          .col-md-3 img{
+          width:180px;
+          height:255px;
+          }
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+          .carousel-control-prev,
+          .carousel-control-next{
+          top:auto;
+          bottom:auto;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+  </style>
+  </head>
+  <body>
+  <center>{% if messages %}
+    {% for message in messages %}
+    <h1>{{message}}</h1>
+    {% endfor %}
+    {% endif %}</center>
+  <form class="form-inline" method="post">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="Search" >
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+  </form>
+<div class="container">
+    <!--Slideshow starts here -->
+    {% for product, range, nSlides in allProds %}
+    <h5 class="my-4">Flash Sale On {{product.0.subcategory}} - Recommended Items</h5>
+<div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+       {% for i in range %}
+      <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}" ></li>
+      {% endfor %}
+    </ul>
+
+
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 13rem; height: auto;">
+            <img src='/media/{{product.0.image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="color: black;">{{product.0.name}}</h5>
+                <p class="card-text" style="color: black;">{{product.0.author}}</p>
+                <div class="price-wrap h5">
+				<span class="desc"  style="color: black;">₹{{product.0.price}} <del class="price-old">₹{{product.0.oldprice}}</del></span>
+			</div>
+                <a href="cart/{{ product.0.slug }}" class="btn btn-primary">Add to Cart</a>
+                <a href="remove/{{ product.0.slug }}" class="btn btn-danger">Remove from Cart</a>
+
+            </div>
+          </div>
+       </div>
+
+
+        {% for i in product|slice:"1:"%}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 13rem; height: auto;" >
+            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title" style="color: black;">{{i.name}}</h5>
+              <p class="card-text" style="color: black;">{{i.author}}</p>
+               <div class="price-wrap h5">
+				<span class="desc" style="color: black;">₹{{i.price}}<del class="price-old">₹{{i.oldprice}}</del></span>
+			</div>
+               <a href="cart/{{ i.slug }}" class="btn btn-primary">Add to Cart</a>
+                <a href="remove/{{ i.slug }}" class="btn btn-danger">Remove from Cart</a>
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+      </div><div class="carousel-item">
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+
+
+</div>
+</div>
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+    {% endfor %}
+    </div>
+
+</div>
+</div>
+ <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> www.Bookworld.com.in</a>
+  </div>
+  <!-- Copyright -->
+ {% endblock %}
+
+      </div>
+  </div>
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>

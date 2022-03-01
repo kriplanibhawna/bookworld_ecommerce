@@ -1,0 +1,51 @@
+{%extends 'home.html'%}
+{%block content%}
+{%load static%}
+<html lang="en">
+<head>
+  <title>home</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="row">
+    {%for a in key%}
+<div class="col-4" >
+	<figure class="card card-product product" style="width: 13rem; height: auto;" >
+		<div class="img-wrap" ><img src="{{a.image.url}}" style="width: 200px; height: 300px;"></div>
+	    <figcaption class="info-wrap">
+				<h4 class="title" style="color: black;">{{a.name}}</h4>
+			  <p class="card-text" >{{i.author}}</p>
+		</figcaption>
+		<div class="bottom-wrap">
+          <a href="cart/{{ a.slug }}" class="btn btn-success">Add to Cart</a>
+          <a href="remove/{{ a.slug }}" class="btn btn-danger">Remove from Cart</a>
+			<div class="price-wrap h5">
+				<span class="desc" style="color: black;">₹{{a.price}}</span> <del class="price-old" style="color: black;">₹{{a.oldprice}}</del>
+			</div> <!-- price-wrap.// -->
+		</div> <!-- bottom-wrap.// -->
+	</figure>
+
+</div> <!-- col // -->
+ {%endfor%}
+
+
+</div>
+</div>
+<!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> www.Bookworld.com.in</a>
+  </div>
+  <!-- Copyright -->
+    {%endblock%}
+</body>
+</html>

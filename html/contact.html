@@ -1,0 +1,98 @@
+{%extends 'home.html'%}
+{%block content%}
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<section class="mb-4">
+
+<h1 align="center"><i>CONTACT US</i></h1>
+<div class="row">
+	<div class="col-md-9 mb-md-0 mb-5">
+		<form id="contact-form" name="contact-form" method="post">
+            {% csrf_token %}
+			<div class="row">
+				<div class="col-md-6">
+					<div class="md-form mb-0">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="enter your name"><br>
+                 </div>
+             </div>
+                <div class="col-md-4">
+                	<div class="md-form mb-0">
+                		<input type="text" id="email" name="email" class="form-control" placeholder="email"><br>
+                	</div>
+                </div>
+                </div>
+                <div class="row">
+                	<div class="col-md-10">
+                		<div class="md-form mb-0">
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="sbject"><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-10">
+
+                        <div class="md-form">
+                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" placeholder="enter your message"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            <div class="text-center text-md-left">
+                <br><center><input type="submit" value="send" ></center>
+            </div>
+
+        </div>
+ </form>
+        <div class="col-md-3 text-center mb-3">
+            <ul class="list-unstyled mb-0">
+                	<div class="col-md-10">
+                        <h5>NUMBER</h5>
+                          <h6>787875294</h6>
+                        </div>
+                    <div class="col-md-10">
+
+                        <h5>Email</h5>
+                       <h6>someone0@gmail.com</h6>
+                        </div>
+                    	<div class="col-md-10">
+                             <h5>ADDRESS</h5>
+                            <ul></ul>
+                                <li><h6>LAL GHATI IN FRONT OF GUFA MANDIR,BHOAPL</h6></li>
+                                <li><h6>ABOVE MILAN RESTRO MP NAGAR,BHOAPL</h6></li>
+                                <li><h6>GALI NO.6 ABOVE CENTER GYM MISROD,BHOAPL</h6></li>
+                        </ul>
+                        </div>
+        </div>
+</div>
+    </div>
+</section>
+ <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> www.Bookworld.com.in</a>
+  </div>
+  <!-- Copyright -->
+{%endblock%}
+</body>
+</html>

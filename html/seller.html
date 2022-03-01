@@ -1,0 +1,68 @@
+{%extends 'home.html'%}
+{%block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+</head>
+<body >
+<h1 style="text-align:center;"><i>SELLER'S CORNER</i></h1>
+<h4 style="text-align:center;">Enter your details we will contact you shortly</h4>
+<div class="row">
+    <div class="col-md-9 mb-md-0 mb-5">
+        <form id="seller-form" name="seller-form" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <div class="md-form mb-0">
+                        <input type="text" id="sname" name="sname" class="form-control" placeholder="enter your name"><br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="md-form mb-0">
+                        <input type="email" id="semail" name="semail" class="form-control" placeholder="enter your email"><br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="md-form mb-0">
+                        <input type="number" id="snumber" name="snumber" class="form-control" placeholder="enter your mobile no."><br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="md-form mb-0">
+                       <input type="text" id="sstate" name="sstate" class="form-control" placeholder="enter your state and city"><br>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-md-left">
+                <br><center><input type="submit" value="send" ></center>
+            </div>
+        </form>
+    </div>
+</div>
+ <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> www.Bookworld.com.in</a>
+  </div>
+  <!-- Copyright -->
+{%endblock%}
+</body>
+</html>

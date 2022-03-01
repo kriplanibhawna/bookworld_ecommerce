@@ -1,0 +1,57 @@
+{%extends 'home.html'%}
+{%block content%}
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'css/login.css'%}">
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<center>{% if messages %}
+    {% for message in messages %}
+    <h1>{{ message }}</h1>
+    {% endfor %}
+    {% endif %}</center>
+<div class="box" style="margin-top: 200px;">
+  <h2>Login</h2>
+  <form method="post">
+      {% csrf_token %}
+    <div class="inputBox">
+      <input type="text" name="username" required onkeyup="this.setAttribute('value', this.value);" value="">
+      <label>Username</label>
+    </div>
+    <div class="inputBox">
+      <input type="password" name="password" required value=""
+             onkeyup="this.setAttribute('value', this.value);"
+             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+      <label>Password</label>
+    </div>
+    <input type="submit" name="sign-in" value="Sign In">
+      <p class="text-center">Signin for new account</p>
+        <p class="text-center text-muted small">Don't have an account? <a href="signup">Sign up here!</a></p>
+  </form>
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> www.Bookworld.com.in</a>
+  </div>
+  <!-- Copyright -->
+
+
+{%endblock%}
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+{%extends 'home.html'%}
+{%block content%}
+{%load static%}
+<html>
+<head>
+    <meta charset="utf-8">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <body>
+<center>{% if messages %}
+    {% for message in messages %}
+    <h1>{{message}}</h1>
+    {% endfor %}
+    {% endif %}</center>
+<h2>Order Summary</h2>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Item</th>
+      <th scope="col">price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Item Price</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for order_item in object.orderitems.all %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <th >{{order_item.item}}</th>
+      <td>₹{{order_item.item.price}}</td>
+      <td>{{order_item.quantity}}</td>
+      <td>₹{{order_item.get_total_item_price}} (savings₹{{order_item.get_amount_saved}})</td>
+        <td><a href="{% url 'remove-single-item-from-cart' order_item.item.slug %}"><i class="fa fa-trash"></i></a></td>
+
+    </tr>
+  {%endfor%}
+  <tr colspan="4">
+    <th>Total Amount</th> <td>{{object.get_total}}</td>
+  </tr>
+<tr><a class='btn btn-danger float-right ml-2' href="{% url 'address' %}">Proceed to checkout</a>
+            <a class='btn btn-primary float-right' href='/'>Continue shopping</a></tr>
+  </tbody>
+</table>
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{%endblock%}
+  </body>
+</html>

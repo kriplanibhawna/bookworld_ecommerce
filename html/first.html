@@ -1,0 +1,95 @@
+{%extends 'home.html'%}
+{%block content%}
+{%load static%}
+<html lang="en">
+<head>
+  <title>home</title>
+	<link rel="stylesheet" type="text/css" href="{%static 'css/first.css'%}">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body >
+<center>{% if messages %}
+    {% for message in messages %}
+    <h1>{{message}}</h1>
+    {% endfor %}
+    {% endif %}</center>
+<form class="form-inline" method="post">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="Search" >
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+</form>
+<div class="bg-dark">
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+  </ul>
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{%static 'images\books1.jpg'%}" width="1250px" height="350px"  alt="1">
+    </div>
+    <div class="carousel-item">
+      <img src="{%static 'images\book2.jpg'%}"  width="1250px" height="350px" alt="2">
+    </div>
+  </div>
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
+
+
+
+  <h1 style="text-align:center;">STATIONARY</h1>
+
+<div class="container">
+<div class="row">
+    {%for a in ab%}
+<div class="col-4" >
+	<figure class="card card-product product" >
+		<div class="img-wrap"><img src="{{a.image.url}}" style="width: 200px; height: 300px;"></div>
+	    <figcaption class="info-wrap">
+				<h4 class="title">{{a.name}}</h4>
+		</figcaption>
+		<div class="bottom-wrap">
+          <a href="cart/{{ a.slug }}" class="btn btn-success">Add to Cart</a>
+          <a href="remove/{{ a.slug }}" class="btn btn-danger">Remove from Cart</a>
+			<div class="price-wrap h5">
+				<span class="desc">₹{{a.price}}</span> <del class="price-old">₹{{a.oldprice}}</del>
+			</div> <!-- price-wrap.// -->
+		</div> <!-- bottom-wrap.// -->
+	</figure>
+
+</div> <!-- col // -->
+ {%endfor%}
+
+
+</div>
+     <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> www.Bookworld.com.in</a>
+  </div>
+  <!-- Copyright -->
+{%endblock%}
+
+</body>
+</html>
